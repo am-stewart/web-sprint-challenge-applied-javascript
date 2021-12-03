@@ -33,7 +33,7 @@ const Header = (title, date, temp) => {
   //  </div>
   //
 }
-console.log(Header())
+// console.log(Header())
 
 
 

@@ -2,7 +2,6 @@
 import axios from 'axios';
 
 const Tabs = (topics) => {
-  // console.log(topics)
   const topicsDiv = document.createElement('div');
   topicsDiv.classList.add('topics')
 
@@ -16,7 +15,7 @@ const Tabs = (topics) => {
 
   return topicsDiv
 }
-// console.log(Tabs());
+
 
   // TASK 3
   // ---------------------
