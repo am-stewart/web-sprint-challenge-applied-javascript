@@ -1,29 +1,22 @@
 
-///AXIOS INFORMATION
 import axios from 'axios';
-
-  axios.get('http://localhost:5000/api/topics')
-  .then(resp => {
-    const topicsArray = (resp.data.topics);
-  }).catch(error => {
-    console.log(error)
-  }).finally(() => console.log('yay!'))
-
 
 const Tabs = (topics) => {
   // console.log(topics)
-  const topicsDiv = document.createElement('div')
-  const tab = document.createElement('div')
-
+  const topicsDiv = document.createElement('div');
   topicsDiv.classList.add('topics')
-  tab.classList.add('tab')
 
-  ////NEED TO ADD TEXT CONTENT FOR TABS
-  tab.textContent = 'tabs go here'
+  topics.forEach(topic => {
+    const tab = document.createElement('div')
+    tab.classList.add('tab')
+    tab.textContent = topic
 
-  topicsDiv.appendChild(tab)
+    topicsDiv.appendChild(tab);
+  })
 
   return topicsDiv
+}
+// console.log(Tabs());
 
   // TASK 3
   // ---------------------
@@ -39,12 +32,16 @@ const Tabs = (topics) => {
   //   <div class="tab">technology</div>
   // </div>
   //
-}
-console.log(Tabs());
 
 
 const tabsAppender = (selector) => {
-  document.querySelector(selector).appendChild(Tabs());
+  axios.get('http://localhost:5000/api/topics')
+  .then(resp => {
+    document.querySelector(selector).appendChild(Tabs(resp.data.topics))
+  }).catch(error => {
+    console.log(error)
+  })
+  
   // TASK 4
   // ---------------------
   // Implement this function which takes a css selector as its only argument.
